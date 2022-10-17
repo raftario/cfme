@@ -1,0 +1,37 @@
+[package]
+name = "cfme"
+version = "0.1.0"
+edition = "2021"
+authors = ["Raphaël Thériault <self@raftar.io>"]
+license = "MIT"
+description = "Uses the Cloudflare API to point DNS records to the host's public IP"
+
+[dependencies]
+anyhow = "1.0.65"
+clap = { version = "4.0.15", default-features = false, features = [
+    "derive",
+    "help",
+    "usage",
+    "env",
+    "cargo",
+    "std",
+] }
+serde = { version = "1.0.145", features = ["derive"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
+ureq = { version = "2.5.0", default-features = false, features = [
+    "tls",
+    "json",
+] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+libc = "0.2.135"
+neli = "0.6.2"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.42.0", features = [
+    "Win32_Foundation",
+    "Win32_Networking_WinSock",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_NetworkManagement_Ndis",
+] }
