@@ -1,10 +1,9 @@
-use anyhow::{anyhow, bail, Error};
-use serde::{Deserialize, Serialize};
-use std::net::IpAddr;
-use std::time::Duration;
-use tracing_subscriber::fmt::format::FmtSpan;
+use std::{net::IpAddr, time::Duration};
 
+use anyhow::{anyhow, bail, Error};
 use clap::Parser;
+use serde::{Deserialize, Serialize};
+use tracing_subscriber::fmt::format::FmtSpan;
 use ureq::Agent;
 
 #[cfg_attr(target_os = "windows", path = "windows.rs")]
